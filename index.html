@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>BiankaAnimalier | Transport animaux < 1 jour</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefaf5;
+            color: #2d2a24;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            background-color: #ffffffea;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #c96f3e;
+        }
+        .logo span {
+            color: #5a3e2b;
+            font-weight: 600;
+        }
+        .lang-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            max-width: 600px;
+        }
+        .lang-btn {
+            background: #f0e2d8;
+            border: none;
+            padding: 0.35rem 0.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .lang-btn.active {
+            background: #c96f3e;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #3b2a21;
+            transition: 0.2s;
+        }
+        .nav-links a:hover { color: #c96f3e; }
+        .btn-contact-nav {
+            background: #c96f3e;
+            color: white !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #c96f3e;
+            border-radius: 4px;
+        }
+        .hero {
+            background: linear-gradient(115deg, #f7ede4 0%, #fef5ed 100%);
+            padding: 2rem 0;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.2; }
+        .hero-text p { font-size: 1.1rem; margin: 1rem 0; color: #4a3a2c; }
+        .hero-btn {
+            background: #c96f3e;
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .hero-images {
+            flex: 1;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .hero-images img {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 28px;
+            box-shadow: 0 12px 20px -10px rgba(0,0,0,0.15);
+            border: 3px solid white;
+            transition: 0.2s;
+        }
+        .ip-card {
+            background: #e9ddd2;
+            border-radius: 60px;
+            padding: 0.5rem 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            margin-top: 1.2rem;
+            font-weight: 500;
+        }
+        .services-grid, .testi-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .service-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            flex: 1 1 260px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid #f0e2d8;
+        }
+        .service-card i { font-size: 2.5rem; color: #c96f3e; margin-bottom: 1rem; }
+        .double-service {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .info-block {
+            flex: 1;
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+            border: 1px solid #f3e3d9;
+        }
+        .cage-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1rem 0;
+        }
+        .cage-item {
+            background: #f9efea;
+            border-radius: 60px;
+            padding: 0.3rem 1rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .price-badge {
+            background: #c96f3e10;
+            border-left: 5px solid #c96f3e;
+            padding: 1rem;
+            margin: 1.2rem 0;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .guarantee-card {
+            background: #2d6a4f10;
+            border: 1px solid #c96f3e30;
+            border-radius: 28px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .testi-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            max-width: 330px;
+            border-left: 5px solid #c96f3e;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.02);
+        }
+        .rating { color: #f4b942; margin-bottom: 0.5rem; letter-spacing: 2px; }
+        .contact-direct {
+            background: #2d2a24;
+            color: white;
+            text-align: center;
+            border-radius: 48px;
+            margin: 2rem auto;
+        }
+        .email-link {
+            font-size: 1.3rem;
+            background: #c96f3e;
+            display: inline-block;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            margin: 1rem 0;
+            color: white !important;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .email-link:hover { background: #a7582e; transform: scale(1.02); }
+        .contact-btn {
+            background: white;
+            color: #c96f3e;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        footer {
+            background: #1f1c18;
+            color: #ccc6c0;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            max-width: 450px;
+            width: 90%;
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        .btn-small {
+            background: #c96f3e20;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #c96f3e;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        @media (max-width: 800px) {
+            nav { flex-direction: column; align-items: stretch; }
+            .hero-text h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">🐾 BiankaAnimalier <span>Transport Animaux</span></div>
+    <div class="lang-selector" id="langSelector">
+        <button class="lang-btn" data-lang="fr">🇫🇷 Français</button>
+        <button class="lang-btn" data-lang="de">🇩🇪 Allemagne</button>
+        <button class="lang-btn" data-lang="at">🇦🇹 Autriche</button>
+        <button class="lang-btn" data-lang="es">🇪🇸 Espagne</button>
+        <button class="lang-btn" data-lang="sk">🇸🇰 Slovaquie</button>
+        <button class="lang-btn" data-lang="si">🇸🇮 Slovénie</button>
+        <button class="lang-btn" data-lang="hr">🇭🇷 Croatie</button>
+        <button class="lang-btn" data-lang="cz">🇨🇿 Rép. Tchèque</button>
+    </div>
+    <div class="nav-links">
+        <a href="#services" data-key="navServices">Services</a>
+        <a href="#hebergement" data-key="navHeberg">Hébergement</a>
+        <a href="#temoignages" data-key="navAvis">Avis</a>
+        <a href="#" id="navContactBtn" class="btn-contact-nav" data-key="navContact">Contacter</a>
+    </div>
+</nav>
+
+<!-- Hero Section avec 2 photos perroquets garanties -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <h1 data-key="heroTitle">🚀 Transport garanti <span style="color:#c96f3e;">en moins d’1 journée</span></h1>
+                <p data-key="heroDesc"><strong>BiankaAnimalier</strong> : livraison express France & Europe en <24h. Frais max 200€, location cage dès 200€. Service 7j/7.</p>
+                <button class="hero-btn" id="heroContactBtn" data-key="heroBtn">📞 Contacter l'agence</button>
+                <div class="ip-card" id="ipAddressDisplay">
+                    <i class="fas fa-shield-alt"></i> <span id="visitorIp">Chargement IP...</span>
+                </div>
+            </div>
+            <div class="hero-images">
+                <img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Chien transport">
+                <img src="https://images.pexels.com/photos/208984/pexels-photo-208984.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Chat confort">
+                <!-- DEUX PHOTOS DE PERROQUETS QUI S'AFFICHENT CORRECTEMENT -->
+                <img src="https://images.pexels.com/photos/2575326/pexels-photo-2575326.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Perroquet 1">
+                <img src="https://images.pexels.com/photos/1192142/pexels-photo-1192142.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Perroquet ara">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<div class="container" id="services">
+    <h2 data-key="servicesTitle">Nos services premium</h2>
+    <div class="services-grid">
+        <div class="service-card"><i class="fas fa-truck-ramp-box"></i><h3 data-key="service1Title">Transport < 24h garanti</h3><p data-key="service1Desc">Expédition express dans toute l'Europe. Livraison en moins d’un jour ouvré. Traçabilité GPS.</p><span class="cage-item">🐕 🐈 🦜</span></div>
+        <div class="service-card"><i class="fas fa-store"></i><h3 data-key="service2Title">Location & Vente cages</h3><p data-key="service2Desc">Location à partir de <strong>200€</strong> (caution). Cages homologuées pour chien, chat, perroquet + gamelles & aliments.</p></div>
+        <div class="service-card"><i class="fas fa-home"></i><h3 data-key="service3Title">Hébergement 7j/7</h3><p data-key="service3Desc">Pension familiale, jardin sécurisé, volière chauffée. Ouvert tous les jours, y compris weekends.</p></div>
+    </div>
+</div>
+
+<!-- Location & vente cage + Hébergement -->
+<div class="container" id="cages">
+    <div class="double-service">
+        <div class="info-block">
+            <i class="fas fa-crate-apple" style="font-size: 2rem; color:#c96f3e;"></i>
+            <h3 data-key="cageTitle">📍 Location & vente cages + nourriture</h3>
+            <p data-key="cageDesc">Pour chiens, chats, perroquets. Location débutant à <strong>200€ TTC</strong> (dépôt de garantie inclus). Vente possible sur devis.</p>
+            <div class="cage-list"><span class="cage-item">🐕 Chien (S/M/L/XL)</span><span class="cage-item">🐈 Chat rigide/souple</span><span class="cage-item">🦜 Perroquet & NAC</span></div>
+            <div class="price-badge" data-key="cagePriceInfo">⭐ Location cage : à partir de 200€ (matériaux premium, livraison possible)</div>
+            <button class="btn-small" id="cageInfoBtn">📦 Demander un devis cages</button>
+        </div>
+        <div class="info-block" id="hebergement">
+            <i class="fas fa-hotel" style="font-size: 2rem; color:#c96f3e;"></i>
+            <h3 data-key="hebergTitle">🏡 Hébergement animalier 7j/7</h3>
+            <p data-key="hebergDesc">Pension complète avec soins individualisés, nourriture premium incluse. Accès 24h/24, 7 jours sur 7.</p>
+            <ul style="margin:1rem 0 0 1.2rem;"><li>✔ Chien : parc clôturé + promenades</li><li>✔ Chat : espace calme avec arbre à chat</li><li>✔ Perroquet : volière intérieure chauffée</li><li>✔ Photos & vidéos quotidiennes</li></ul>
+            <button class="btn-small" id="hebergementBtn">🐾 Réserver une place pension</button>
+        </div>
+    </div>
+    
+    <!-- Garantie transport 1 jour + tarifs -->
+    <div class="guarantee-card">
+        <i class="fas fa-stopwatch" style="font-size: 2rem; color:#c96f3e;"></i>
+        <h3 data-key="guaranteeTitle" style="margin: 0.5rem 0;">✅ Transport effectué en moins d’1 journée – Garantie BiankaAnimalier</h3>
+        <p data-key="guaranteeDesc"><strong>Comment ça marche ?</strong> Nous organisons des tournées optimisées avec chauffeurs dédiés. Votre animal est pris en charge le matin et livré avant minuit dans la plupart des régions d'Europe. Suivi en temps réel. <strong>Frais de transport maximum : 200€ TTC</strong> (selon distance, plafond garanti).</p>
+        <div class="price-badge" style="margin-top: 0.8rem; background:#c96f3e20;" data-key="transportPriceInfo">🚚 Transport garanti < 24h – Tarif maximal 200€ (France, Allemagne, Autriche, Espagne, pays slaves).</div>
+    </div>
+</div>
+
+<!-- Témoignages -->
+<div class="testimonials" id="temoignages">
+    <div class="container">
+        <h2 data-key="testiTitle">Ils témoignent – Agence 7j/7 efficace</h2>
+        <div class="testi-grid">
+            <div class="testi-card"><div class="rating">★★★★★</div><p data-key="testi1">"Mon chien transporté de Paris à Vienne (Autriche) en 8h seulement, moins de 200€. Chauffeur aux petits soins. Agence réactive !"</p><div class="testi-author"><i class="fas fa-user-circle"></i> Sophie M. & Rio</div></div>
+            <div class="testi-card"><div class="rating">★★★★★</div><p data-key="testi2">"Location cage perroquet à 200€, matériel neuf et hygiénique. Également acheté des graines. Service location parfait."</p><div class="testi-author"><i class="fas fa-user-circle"></i> Julien T. & Coco</div></div>
+            <div class="testi-card"><div class="rating">★★★★★</div><p data-key="testi3">"Hébergement 7j/7 pour mes 2 chats pendant 2 semaines, envoi de photos chaque jour. Je recommande BiankaAnimalier."</p><div class="testi-author"><i class="fas fa-user-circle"></i> Camille L. & Miso/Sushi</div></div>
+            <div class="testi-card"><div class="rating">★★★★★</div><p data-key="testi4">"Transport urgent Croatie -> France, livré en moins d’1 journée, 195€. Organisation incroyable, merci !"</p><div class="testi-author"><i class="fas fa-user-circle"></i> Marko (Zagreb)</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact direct : email + bouton -->
+<div class="container contact-direct">
+    <div style="padding: 2rem;">
+        <i class="fas fa-envelope-open-text" style="font-size: 2.5rem;"></i>
+        <h3 data-key="contactTitle">Contactez BiankaAnimalier – 7j/7</h3>
+        <p data-key="contactSub">Nous répondons sous 1h (même le dimanche). Écrivez-nous ou appelez.</p>
+        <a href="mailto:biankaanimalier@gmail.com" class="email-link" id="emailLink">✉️ biankaanimalier@gmail.com</a>
+        <div><small data-key="copyHint">Cliquez pour copier l’email ou ouvrir votre messagerie.</small></div>
+        <button class="contact-btn" id="bigContactBtn" style="margin-top: 1.2rem;" data-key="directBtn">📱 Formulaire de contact rapide</button>
+        <div style="margin-top: 1rem;"><i class="fas fa-clock"></i> <span data-key="open7">📅 Assistance 24h/24 – 7 jours sur 7 (y compris jours fériés)</span></div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 BiankaAnimalier Transport Animaux – Agrément FR• Transport < 1 jour • Frais max 200€ • Location cage ≥200€ • 7j/7</p>
+</footer>
+
+<!-- Modal Contact -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModalBtn">&times;</span>
+        <h3><i class="fas fa-paw"></i> Contacter BiankaAnimalier</h3>
+        <input type="text" id="contactName" placeholder="Votre nom / Ihr Name">
+        <input type="email" id="contactEmail" placeholder="Email *">
+        <textarea rows="3" id="contactMsg" placeholder="Précisez votre besoin (transport, cage, hébergement, pays...)"></textarea>
+        <button id="submitContact">Envoyer la demande</button>
+        <small>Réponse garantie sous 1h (7j/7)</small>
+    </div>
+</div>
+
+<script>
+    // ---------- IP VISITEUR ----------
+    async function fetchUserIP() {
+        try {
+            const res = await fetch('https://api.ipify.org?format=json');
+            const data = await res.json();
+            document.getElementById('visitorIp').innerHTML = `<i class="fas fa-network-wired"></i> IP: ${data.ip}`;
+        } catch(e) {
+            document.getElementById('visitorIp').innerText = 'IP: indisponible';
+        }
+    }
+    fetchUserIP();
+
+    // ---------- TRADUCTIONS COMPLÈTES : Allemagne, Autriche, Espagne, Slovaquie, Slovénie, Croatie, Tchèque + Français ----------
+    const translations = {
+        fr: {
+            navServices: "Services", navHeberg: "Hébergement", navAvis: "Avis", navContact: "Contacter",
+            heroTitle: "🚀 Transport garanti en moins d’1 journée", heroDesc: "BiankaAnimalier : livraison express <24h. Frais max 200€, location cage dès 200€. Service 7j/7.",
+            heroBtn: "📞 Contacter l'agence", servicesTitle: "Nos services premium", service1Title: "Transport < 24h garanti",
+            service1Desc: "Expédition express dans toute l'Europe. Livraison en moins d’un jour.", service2Title: "Location & Vente cages",
+            service2Desc: "Location à partir de 200€. Cages chien, chat, perroquet + aliments.", service3Title: "Hébergement 7j/7",
+            service3Desc: "Pension familiale, jardin, volière. Ouvert tous les jours.", cageTitle: "📍 Location & vente cages + nourriture",
+            cageDesc: "Pour chiens, chats, perroquets. Location débutant à 200€.", cagePriceInfo: "⭐ Location cage : à partir de 200€",
+            hebergTitle: "🏡 Hébergement animalier 7j/7", hebergDesc: "Pension complète avec soins, nourriture premium incluse. 7j/7.",
+            guaranteeTitle: "✅ Transport effectué en moins d’1 journée – Garantie BiankaAnimalier",
+            guaranteeDesc: "Tournées optimisées. Pris en charge le matin, livré avant minuit. Frais maximum 200€ TTC.",
+            transportPriceInfo: "🚚 Transport garanti < 24h – Tarif maximal 200€ (Europe).", testiTitle: "Ils témoignent – Agence 7j/7 efficace",
+            testi1: "Mon chien Paris → Vienne en 8h, moins de 200€.", testi2: "Location cage perroquet à 200€, parfait.",
+            testi3: "Hébergement 7j/7 pour chats, photos quotidiennes.", testi4: "Transport Croatie → France <24h, 195€.",
+            contactTitle: "Contactez BiankaAnimalier – 7j/7", contactSub: "Nous répondons sous 1h (même dimanche).",
+            copyHint: "Cliquez pour copier l’email.", directBtn: "📱 Formulaire de contact", open7: "📅 Assistance 24h/24 – 7 jours sur 7"
+        },
+        de: { // Allemagne
+            navServices:"Dienste", navHeberg:"Unterkunft", navAvis:"Bewertungen", navContact:"Kontakt", heroTitle:"🚀 Transport in <1 Tag garantiert",
+            heroDesc:"BiankaAnimalier: Expresszustellung <24h. Max. 200€, Käfig ab 200€. 7/7 Service.", heroBtn:"📞 Agentur kontaktieren",
+            servicesTitle:"Premium-Dienste", service1Title:"Transport < 24h", service1Desc:"Expressversand in ganz Europa. Lieferung in <1 Tag.",
+            service2Title:"Käfigvermietung & Verkauf", service2Desc:"Ab 200€. Für Hund, Katze, Papagei + Futter.", service3Title:"Tierpension 7/7",
+            service3Desc:"Familienpension, Garten, Voliere. Täglich geöffnet.", cageTitle:"📍 Käfigvermietung & Futter", cageDesc:"Miete ab 200€.",
+            cagePriceInfo:"⭐ Käfigmiete ab 200€", hebergTitle:"🏡 Tierpension 7/7", hebergDesc:"Vollpension mit Pflege, inkl. Futter. 7/7.",
+            guaranteeTitle:"✅ Transport in <1 Tag – Garantie BiankaAnimalier", guaranteeDesc:"Optimierte Touren. Morgens Abholung, Lieferung vor Mitternacht. Max. 200€.",
+            transportPriceInfo:"🚚 Transport garantiert <24h – Maximal 200€", testiTitle:"Kundenstimmen 7/7", testi1:"Hund Paris→Wien in 8h, unter 200€.",
+            testi2:"Papageienkäfig 200€, top.", testi3:"Unterkunft 7/7 für Katzen, tägliche Fotos.", testi4:"Transport Kroatien→Frankreich <24h, 195€.",
+            contactTitle:"Kontakt BiankaAnimalier 7/7", contactSub:"Antwort in 1h.", copyHint:"Email kopieren.", directBtn:"📱 Kontaktformular", open7:"📅 24/7 Support – 7 Tage die Woche"
+        },
+        at: { // Autriche (similaire à de mais spécifique)
+            navServices:"Dienste", navHeberg:"Unterkunft", navAvis:"Bewertungen", navContact:"Kontakt", heroTitle:"🚀 Transport in <1 Tag garantiert (Österreich)",
+            heroDesc:"BiankaAnimalier: Expresszustellung <24h. Max. 200€, Käfig ab 200€. 7/7 Service.", heroBtn:"📞 Agentur kontaktieren",
+            servicesTitle:"Premium-Dienste", service1Title:"Transport < 24h", service1Desc:"Expressversand in ganz Europa. Lieferung in <1 Tag.",
+            service2Title:"Käfigvermietung & Verkauf", service2Desc:"Ab 200€. Für Hund, Katze, Papagei + Futter.", service3Title:"Tierpension 7/7",
+            service3Desc:"Familienpension, Garten, Voliere. Täglich geöffnet.", cageTitle:"📍 Käfigvermietung & Futter", cageDesc:"Miete ab 200€.",
+            cagePriceInfo:"⭐ Käfigmiete ab 200€", hebergTitle:"🏡 Tierpension 7/7", hebergDesc:"Vollpension mit Pflege, inkl. Futter. 7/7.",
+            guaranteeTitle:"✅ Transport in <1 Tag – Garantie BiankaAnimalier", guaranteeDesc:"Optimierte Touren. Max. 200€.",
+            transportPriceInfo:"🚚 Transport garantiert <24h – Maximal 200€", testiTitle:"Kundenstimmen 7/7", testi1:"Hund Paris→Wien in 8h, unter 200€.",
+            testi2:"Papageienkäfig 200€, top.", testi3:"Unterkunft 7/7 für Katzen, tägliche Fotos.", testi4:"Transport Kroatien→Frankreich <24h, 195€.",
+            contactTitle:"Kontakt BiankaAnimalier 7/7", contactSub:"Antwort in 1h.", copyHint:"Email kopieren.", directBtn:"📱 Kontaktformular", open7:"📅 24/7 Support – 7 Tage die Woche"
+        },
+        es: { // Espagne
+            navServices:"Servicios", navHeberg:"Alojamiento", navAvis:"Opiniones", navContact:"Contacto", heroTitle:"🚀 Transporte garantizado en <1 día",
+            heroDesc:"BiankaAnimalier: entrega exprés <24h. Máx 200€, jaula desde 200€. 7/7.", heroBtn:"📞 Contactar agencia",
+            servicesTitle:"Servicios premium", service1Title:"Transporte <24h", service1Desc:"Envío exprés por Europa. Entrega en <1 día.",
+            service2Title:"Alquiler y venta jaulas", service2Desc:"Desde 200€. Perros, gatos, loros + comida.", service3Title:"Alojamiento 7/7",
+            service3Desc:"Pensión familiar, jardín, pajarera.", cageTitle:"📍 Alquiler jaulas + comida", cageDesc:"Desde 200€.",
+            cagePriceInfo:"⭐ Jaula desde 200€", hebergTitle:"🏡 Alojamiento 7/7", hebergDesc:"Pensión completa, comida premium incluida.",
+            guaranteeTitle:"✅ Transporte en <1 día – Garantía BiankaAnimalier", guaranteeDesc:"Recogida por la mañana, entrega antes de medianoche. Máx 200€.",
+            transportPriceInfo:"🚚 Transporte garantizado <24h – Tarifa máxima 200€", testiTitle:"Testimonios 7/7", testi1:"Perro París→Viena en 8h, <200€.",
+            testi2:"Jaula loro 200€ perfecto.", testi3:"Alojamiento 7/7 gatos, fotos diarias.", testi4:"Transporte Croacia→Francia <24h, 195€.",
+            contactTitle:"Contacta BiankaAnimalier 7/7", contactSub:"Respuesta en 1h.", copyHint:"Copiar email.", directBtn:"📱 Formulario", open7:"📅 Asistencia 24/7 – 7 días a la semana"
+        },
+        sk: { // Slovaquie
+            navServices:"Služby", navHeberg:"Ubytovanie", navAvis:"Recenzie", navContact:"Kontakt", heroTitle:"🚀 Preprava garantovaná do <1 dňa",
+            heroDesc:"BiankaAnimalier: expresné doručenie <24h. Max 200€, požičanie klietky od 200€. 7/7.", heroBtn:"📞 Kontaktovať",
+            servicesTitle:"Naše služby", service1Title:"Preprava <24h", service1Desc:"Expresná preprava po celej Európe. Doručenie do jedného dňa.",
+            service2Title:"Prenájom a predaj klietok", service2Desc:"Od 200€. Pre psy, mačky, papagáje + jedlo.", service3Title:"Ubytovanie 7/7",
+            service3Desc:"Rodinný penzión, záhrada, voliéra.", cageTitle:"📍 Prenájom klietok + jedlo", cageDesc:"Prenájom od 200€.",
+            cagePriceInfo:"⭐ Klietka od 200€", hebergTitle:"🏡 Ubytovanie zvierat 7/7", hebergDesc:"Plná penzia, starostlivosť.",
+            guaranteeTitle:"✅ Preprava <1 deň – Záruka BiankaAnimalier", guaranteeDesc:"Vyzdvihnutie ráno, doručenie do polnoci. Max 200€.",
+            transportPriceInfo:"🚚 Preprava <24h – max 200€", testiTitle:"Svedectvá 7/7", testi1:"Paríž→Viedeň za 8h, <200€.", testi2:"Klietka pre papagája 200€.",
+            testi3:"Ubytovanie mačiek 7/7, fotky.", testi4:"Preprava Chorvátsko→Francúzsko <24h.", contactTitle:"Kontakt BiankaAnimalier 7/7",
+            contactSub:"Odpoveď do 1h.", copyHint:"Kopírovať email.", directBtn:"📱 Kontaktný formulár", open7:"📅 Podpora 24/7 – 7 dní v týždni"
+        },
+        si: { // Slovénie
+            navServices:"Storitve", navHeberg:"Namestitev", navAvis:"Ocene", navContact:"Kontakt", heroTitle:"🚀 Prevoz v <1 dnevu zagotovljen",
+            heroDesc:"BiankaAnimalier: ekspresna dostava <24h. Največ 200€, najem kletke od 200€. 7/7.", heroBtn:"📞 Kontaktirajte",
+            servicesTitle:"Premium storitve", service1Title:"Prevoz <24h", service1Desc:"Ekspresna dostava po Evropi.", service2Title:"Najem in prodaja kletk",
+            service2Desc:"Od 200€. Za pse, mačke, papige + hrana.", service3Title:"Namestitev 7/7", service3Desc:"Družinski penzion, vrt, voliera.",
+            cageTitle:"📍 Najem kletk + hrana", cageDesc:"Najem od 200€.", cagePriceInfo:"⭐ Kletka od 200€", hebergTitle:"🏡 Namestitev živali 7/7",
+            hebergDesc:"Popolni penzion, nega.", guaranteeTitle:"✅ Prevoz <1 dan – Garancija BiankaAnimalier", guaranteeDesc:"Maks. cena 200€.",
+            transportPriceInfo:"🚚 Prevoz <24h – max 200€", testiTitle:"Pričevanja 7/7", testi1:"Pariz→Dunaj 8h, <200€.", testi2:"Kletka papiga 200€.",
+            testi3:"Namestitev mačk 7/7, fotografije.", testi4:"Prevoz Hrvaška→Francija <24h.", contactTitle:"Kontakt BiankaAnimalier 7/7",
+            contactSub:"Odgovor v 1 uri.", copyHint:"Kopiraj email.", directBtn:"📱 Kontaktni obrazec", open7:"📅 Podpora 24/7 – 7 dni v tednu"
+        },
+        hr: { // Croatie
+            navServices:"Usluge", navHeberg:"Smještaj", navAvis:"Recenzije", navContact:"Kontakt", heroTitle:"🚀 Prijevoz zajamčen za <1 dan",
+            heroDesc:"BiankaAnimalier: ekspresna dostava <24h. Maks 200€, najam kaveza od 200€. 7/7.", heroBtn:"📞 Kontaktirajte",
+            servicesTitle:"Premium usluge", service1Title:"Prijevoz <24h", service1Desc:"Ekspresna dostava Europom.", service2Title:"Najam i prodaja kaveza",
+            service2Desc:"Od 200€. Za pse, mačke, papige + hrana.", service3Title:"Smještaj 7/7", service3Desc:"Obiteljski pansion, vrt, volijera.",
+            cageTitle:"📍 Najam kaveza + hrana", cageDesc:"Najam od 200€.", cagePriceInfo:"⭐ Kavez od 200€", hebergTitle:"🏡 Smještaj 7/7",
+            hebergDesc:"Potpuni pansion, njega.", guaranteeTitle:"✅ Prijevoz <1 dan – Jamstvo BiankaAnimalier", guaranteeDesc:"Maksimalna cijena 200€.",
+            transportPriceInfo:"🚚 Prijevoz <24h – max 200€", testiTitle:"Svjedočanstva 7/7", testi1:"Pas Pariz→Beč 8h <200€.", testi2:"Kavez papiga 200€.",
+            testi3:"Smještaj mačaka 7/7, fotografije.", testi4:"Prijevoz Hrvatska→Francuska <24h.", contactTitle:"Kontakt BiankaAnimalier 7/7",
+            contactSub:"Odgovor unutar 1h.", copyHint:"Kopiraj email.", directBtn:"📱 Kontakt obrazac", open7:"📅 Podrška 24/7 – 7 dana tjedno"
+        },
+        cz: { // République tchèque
+            navServices:"Služby", navHeberg:"Ubytování", navAvis:"Recenze", navContact:"Kontakt", heroTitle:"🚀 Přeprava garantována <1 den",
+            heroDesc:"BiankaAnimalier: expresní doručení <24h. Max 200€, půjčovné klece od 200€. 7/7.", heroBtn:"📞 Kontaktovat",
+            servicesTitle:"Prémiové služby", service1Title:"Přeprava <24h", service1Desc:"Expresní doručení po Evropě.", service2Title:"Půjčovna a prodej klecí",
+            service2Desc:"Od 200€. Pro psy, kočky, papoušky + jídlo.", service3Title:"Ubytování 7/7", service3Desc:"Rodinný penzion, zahrada, voliéra.",
+            cageTitle:"📍 Půjčovna klecí + jídlo", cageDesc:"Půjčení od 200€.", cagePriceInfo:"⭐ Klec od 200€", hebergTitle:"🏡 Ubytování zvířat 7/7",
+            hebergDesc:"Plná penze, péče.", guaranteeTitle:"✅ Přeprava <1 den – Záruka BiankaAnimalier", guaranteeDesc:"Maximální cena 200€.",
+            transportPriceInfo:"🚚 Přeprava <24h – max 200€", testiTitle:"Reference 7/7", testi1:"Pes Paříž→Vídeň za 8h, <200€.", testi2:"Klec papoušek 200€.",
+            testi3:"Ubytování koček 7/7, fotky.", testi4:"Přeprava Chorvatsko→Francie <24h.", contactTitle:"Kontakt BiankaAnimalier 7/7",
+            contactSub:"Odpověď do 1h.", copyHint:"Zkopírovat email.", directBtn:"📱 Kontaktní formulář", open7:"📅 Podpora 24/7 – 7 dní v týdnu"
+        }
+    };
+
+    let currentLang = 'fr';
+    function applyLanguage(lang) {
+        if(!translations[lang]) lang = 'fr';
+        const t = translations[lang];
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if(t[key]) el.innerText = t[key];
+        });
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            if(btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+        currentLang = lang;
+    }
+
+    // Ajout des écouteurs pour chaque bouton de langue (traduction immédiate)
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const langCode = btn.getAttribute('data-lang');
+            applyLanguage(langCode);
+        });
+    });
+    applyLanguage('fr');
+
+    // Modal & interactions
+    const modal = document.getElementById('contactModal');
+    function openModalFunc() { modal.style.display = 'flex'; }
+    document.getElementById('heroContactBtn')?.addEventListener('click', openModalFunc);
+    document.getElementById('navContactBtn')?.addEventListener('click', openModalFunc);
+    document.getElementById('bigContactBtn')?.addEventListener('click', openModalFunc);
+    document.getElementById('closeModalBtn')?.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', (e) => { if(e.target === modal) modal.style.display = 'none'; });
+    document.getElementById('submitContact')?.addEventListener('click', () => {
+        alert("✅ Votre demande a bien été envoyée à BiankaAnimalier. Réponse sous 1h (7j/7).");
+        modal.style.display = 'none';
+    });
+    document.getElementById('cageInfoBtn')?.addEventListener('click', () => {
+        const msg = document.getElementById('contactMsg');
+        if(msg) msg.value = "📍 Demande de devis location/achat cage (démarrage 200€).";
+        openModalFunc();
+    });
+    document.getElementById('hebergementBtn')?.addEventListener('click', () => {
+        const msg = document.getElementById('contactMsg');
+        if(msg) msg.value = "🐾 Demande d’hébergement pour mon animal (pension 7j/7).";
+        openModalFunc();
+    });
+    const emailLink = document.getElementById('emailLink');
+    emailLink?.addEventListener('click', (e) => {
+        navigator.clipboard?.writeText('biankaanimalier@gmail.com');
+        alert("📧 Adresse email copiée ! Vous pouvez aussi cliquer pour ouvrir votre messagerie.");
+    });
+</script>
+</body>
+</html>
