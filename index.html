@@ -339,7 +339,6 @@
             <div class="hero-images">
                 <img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Chien transport">
                 <img src="https://images.pexels.com/photos/208984/pexels-photo-208984.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Chat confort">
-                <!-- DEUX PHOTOS DE PERROQUETS QUI S'AFFICHENT CORRECTEMENT -->
                 <img src="https://images.pexels.com/photos/2575326/pexels-photo-2575326.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Perroquet 1">
                 <img src="https://images.pexels.com/photos/1192142/pexels-photo-1192142.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Perroquet ara">
             </div>
@@ -442,7 +441,7 @@
     }
     fetchUserIP();
 
-    // ---------- TRADUCTIONS COMPLÈTES : Allemagne, Autriche, Espagne, Slovaquie, Slovénie, Croatie, Tchèque + Français ----------
+    // ---------- TRADUCTIONS COMPLÈTES ----------
     const translations = {
         fr: {
             navServices: "Services", navHeberg: "Hébergement", navAvis: "Avis", navContact: "Contacter",
@@ -461,7 +460,7 @@
             contactTitle: "Contactez BiankaAnimalier – 7j/7", contactSub: "Nous répondons sous 1h (même dimanche).",
             copyHint: "Cliquez pour copier l’email.", directBtn: "📱 Formulaire de contact", open7: "📅 Assistance 24h/24 – 7 jours sur 7"
         },
-        de: { // Allemagne
+        de: {
             navServices:"Dienste", navHeberg:"Unterkunft", navAvis:"Bewertungen", navContact:"Kontakt", heroTitle:"🚀 Transport in <1 Tag garantiert",
             heroDesc:"BiankaAnimalier: Expresszustellung <24h. Max. 200€, Käfig ab 200€. 7/7 Service.", heroBtn:"📞 Agentur kontaktieren",
             servicesTitle:"Premium-Dienste", service1Title:"Transport < 24h", service1Desc:"Expressversand in ganz Europa. Lieferung in <1 Tag.",
@@ -473,7 +472,7 @@
             testi2:"Papageienkäfig 200€, top.", testi3:"Unterkunft 7/7 für Katzen, tägliche Fotos.", testi4:"Transport Kroatien→Frankreich <24h, 195€.",
             contactTitle:"Kontakt BiankaAnimalier 7/7", contactSub:"Antwort in 1h.", copyHint:"Email kopieren.", directBtn:"📱 Kontaktformular", open7:"📅 24/7 Support – 7 Tage die Woche"
         },
-        at: { // Autriche (similaire à de mais spécifique)
+        at: {
             navServices:"Dienste", navHeberg:"Unterkunft", navAvis:"Bewertungen", navContact:"Kontakt", heroTitle:"🚀 Transport in <1 Tag garantiert (Österreich)",
             heroDesc:"BiankaAnimalier: Expresszustellung <24h. Max. 200€, Käfig ab 200€. 7/7 Service.", heroBtn:"📞 Agentur kontaktieren",
             servicesTitle:"Premium-Dienste", service1Title:"Transport < 24h", service1Desc:"Expressversand in ganz Europa. Lieferung in <1 Tag.",
@@ -485,7 +484,7 @@
             testi2:"Papageienkäfig 200€, top.", testi3:"Unterkunft 7/7 für Katzen, tägliche Fotos.", testi4:"Transport Kroatien→Frankreich <24h, 195€.",
             contactTitle:"Kontakt BiankaAnimalier 7/7", contactSub:"Antwort in 1h.", copyHint:"Email kopieren.", directBtn:"📱 Kontaktformular", open7:"📅 24/7 Support – 7 Tage die Woche"
         },
-        es: { // Espagne
+        es: {
             navServices:"Servicios", navHeberg:"Alojamiento", navAvis:"Opiniones", navContact:"Contacto", heroTitle:"🚀 Transporte garantizado en <1 día",
             heroDesc:"BiankaAnimalier: entrega exprés <24h. Máx 200€, jaula desde 200€. 7/7.", heroBtn:"📞 Contactar agencia",
             servicesTitle:"Servicios premium", service1Title:"Transporte <24h", service1Desc:"Envío exprés por Europa. Entrega en <1 día.",
@@ -497,7 +496,7 @@
             testi2:"Jaula loro 200€ perfecto.", testi3:"Alojamiento 7/7 gatos, fotos diarias.", testi4:"Transporte Croacia→Francia <24h, 195€.",
             contactTitle:"Contacta BiankaAnimalier 7/7", contactSub:"Respuesta en 1h.", copyHint:"Copiar email.", directBtn:"📱 Formulario", open7:"📅 Asistencia 24/7 – 7 días a la semana"
         },
-        sk: { // Slovaquie
+        sk: {
             navServices:"Služby", navHeberg:"Ubytovanie", navAvis:"Recenzie", navContact:"Kontakt", heroTitle:"🚀 Preprava garantovaná do <1 dňa",
             heroDesc:"BiankaAnimalier: expresné doručenie <24h. Max 200€, požičanie klietky od 200€. 7/7.", heroBtn:"📞 Kontaktovať",
             servicesTitle:"Naše služby", service1Title:"Preprava <24h", service1Desc:"Expresná preprava po celej Európe. Doručenie do jedného dňa.",
@@ -509,7 +508,7 @@
             testi3:"Ubytovanie mačiek 7/7, fotky.", testi4:"Preprava Chorvátsko→Francúzsko <24h.", contactTitle:"Kontakt BiankaAnimalier 7/7",
             contactSub:"Odpoveď do 1h.", copyHint:"Kopírovať email.", directBtn:"📱 Kontaktný formulár", open7:"📅 Podpora 24/7 – 7 dní v týždni"
         },
-        si: { // Slovénie
+        si: {
             navServices:"Storitve", navHeberg:"Namestitev", navAvis:"Ocene", navContact:"Kontakt", heroTitle:"🚀 Prevoz v <1 dnevu zagotovljen",
             heroDesc:"BiankaAnimalier: ekspresna dostava <24h. Največ 200€, najem kletke od 200€. 7/7.", heroBtn:"📞 Kontaktirajte",
             servicesTitle:"Premium storitve", service1Title:"Prevoz <24h", service1Desc:"Ekspresna dostava po Evropi.", service2Title:"Najem in prodaja kletk",
@@ -520,7 +519,7 @@
             testi3:"Namestitev mačk 7/7, fotografije.", testi4:"Prevoz Hrvaška→Francija <24h.", contactTitle:"Kontakt BiankaAnimalier 7/7",
             contactSub:"Odgovor v 1 uri.", copyHint:"Kopiraj email.", directBtn:"📱 Kontaktni obrazec", open7:"📅 Podpora 24/7 – 7 dni v tednu"
         },
-        hr: { // Croatie
+        hr: {
             navServices:"Usluge", navHeberg:"Smještaj", navAvis:"Recenzije", navContact:"Kontakt", heroTitle:"🚀 Prijevoz zajamčen za <1 dan",
             heroDesc:"BiankaAnimalier: ekspresna dostava <24h. Maks 200€, najam kaveza od 200€. 7/7.", heroBtn:"📞 Kontaktirajte",
             servicesTitle:"Premium usluge", service1Title:"Prijevoz <24h", service1Desc:"Ekspresna dostava Europom.", service2Title:"Najam i prodaja kaveza",
@@ -531,7 +530,7 @@
             testi3:"Smještaj mačaka 7/7, fotografije.", testi4:"Prijevoz Hrvatska→Francuska <24h.", contactTitle:"Kontakt BiankaAnimalier 7/7",
             contactSub:"Odgovor unutar 1h.", copyHint:"Kopiraj email.", directBtn:"📱 Kontakt obrazac", open7:"📅 Podrška 24/7 – 7 dana tjedno"
         },
-        cz: { // République tchèque
+        cz: {
             navServices:"Služby", navHeberg:"Ubytování", navAvis:"Recenze", navContact:"Kontakt", heroTitle:"🚀 Přeprava garantována <1 den",
             heroDesc:"BiankaAnimalier: expresní doručení <24h. Max 200€, půjčovné klece od 200€. 7/7.", heroBtn:"📞 Kontaktovat",
             servicesTitle:"Prémiové služby", service1Title:"Přeprava <24h", service1Desc:"Expresní doručení po Evropě.", service2Title:"Půjčovna a prodej klecí",
@@ -559,7 +558,6 @@
         currentLang = lang;
     }
 
-    // Ajout des écouteurs pour chaque bouton de langue (traduction immédiate)
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const langCode = btn.getAttribute('data-lang');
@@ -568,7 +566,6 @@
     });
     applyLanguage('fr');
 
-    // Modal & interactions
     const modal = document.getElementById('contactModal');
     function openModalFunc() { modal.style.display = 'flex'; }
     document.getElementById('heroContactBtn')?.addEventListener('click', openModalFunc);
